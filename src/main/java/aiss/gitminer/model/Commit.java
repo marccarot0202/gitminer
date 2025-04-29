@@ -120,18 +120,6 @@ public class Commit {
         sb.append('=');
         sb.append(((this.authoredDate == null) ? "<null>" : this.authoredDate));
         sb.append(',');
-        sb.append("committerName");
-        sb.append('=');
-        sb.append(((this.committerName == null) ? "<null>" : this.committerName));
-        sb.append(',');
-        sb.append("committerEmail");
-        sb.append('=');
-        sb.append(((this.committerEmail == null) ? "<null>" : this.committerEmail));
-        sb.append(',');
-        sb.append("committedDate");
-        sb.append('=');
-        sb.append(((this.committedDate == null) ? "<null>" : this.committedDate));
-        sb.append(',');
         sb.append("webUrl");
         sb.append('=');
         sb.append(((this.webUrl == null) ? "<null>" : this.webUrl));
