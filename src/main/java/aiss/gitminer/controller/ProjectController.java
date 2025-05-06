@@ -4,6 +4,8 @@ import aiss.gitminer.exceptions.ProjectNotFoundException;
 import aiss.gitminer.model.Project;
 import aiss.gitminer.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class ProjectController {
         this.projectRepository = projectRepository;
     }
 
+    @GetMapping
+    public List<Project> findAll() {
+        return projectRepository.findAll();
+    }
+
     @GetMapping("/{id}")
     public Project findById(@PathVariable String id) throws ProjectNotFoundException {
         Optional<Project> project = projectRepository.findById(id);
@@ -30,7 +37,8 @@ public class ProjectController {
     }
 
     @PostMapping
-    public Project createProject(@RequestBody Project project) {
-        return projectRepository.save(project);
+    public ResponseEntity<Project> createProject(@RequestBody Project project) {
+        Project savedProject = projectRepository.save(project);
+        return new ResponseEntity<>(savedProject, HttpStatus.CREATED);
+        }
     }
-}
