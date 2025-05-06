@@ -1,5 +1,6 @@
 package aiss.gitminer.controller;
 
+import aiss.gitminer.model.Comment;
 import aiss.gitminer.model.Issue;
 import aiss.gitminer.repository.IssueRepository;
 import org.springframework.web.bind.annotation.*;
@@ -29,5 +30,10 @@ public class IssueController {
     @GetMapping("/status/{state}")
     public List<Issue> findByState(@PathVariable String state) {
         return repo.findByState(state);
+    }
+
+    @GetMapping("/{id}/comments")
+    public List<Comment> findCommentsByIssueId(@PathVariable String id) {
+        return repo.findById(id).orElseThrow().getComments();
     }
 }
