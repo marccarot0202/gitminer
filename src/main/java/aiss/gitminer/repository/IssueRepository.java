@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IssueRepository extends JpaRepository<Issue, String> {
     List<Issue> findByState(String state);
+
+    List<Issue> findByAuthorId(String authorId);
 }

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 @RestController
 @RequestMapping("/gitminer/projects")
 public class ProjectController {
@@ -41,5 +42,5 @@ public class ProjectController {
     public ResponseEntity<Project> createProject(@RequestBody Project project) {
         Project savedProject = projectRepository.save(project);
         return new ResponseEntity<>(savedProject, HttpStatus.CREATED);
-        }
     }
+}
