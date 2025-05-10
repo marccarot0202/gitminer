@@ -34,9 +34,15 @@ public class Project {
     @JoinColumn(name = "projectId")
     private List<Issue> issues;
 
+    @JsonProperty("pullRequests")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "projectId")
+    private List<PullRequest> pullRequests;
+
     public Project() {
         commits = new ArrayList<>();
         issues = new ArrayList<>();
+        pullRequests = new ArrayList<>();
     }
 
     public String getId() {
@@ -79,6 +85,13 @@ public class Project {
         this.issues = issues;
     }
 
+    public List<PullRequest> getPullRequests() {
+        return pullRequests;
+    }
+    public void setPullRequests(List<PullRequest> pullRequests) {
+        this.pullRequests = pullRequests;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -94,6 +107,10 @@ public class Project {
         sb.append("issues");
         sb.append('=');
         sb.append(((this.issues == null)?"<null>":this.issues));
+        sb.append(',');
+        sb.append("pullRequests");
+        sb.append('=');
+        sb.append(((this.pullRequests == null)?"<null>":this.pullRequests));
         sb.append(',');
 
         if (sb.charAt((sb.length()- 1)) == ',') {
